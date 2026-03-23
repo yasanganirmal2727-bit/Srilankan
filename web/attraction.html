@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attraction — Sri Lankan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --saffron: #E8862A;
+  --deep: #0D1B2A;
+  --mid: #1A2F45;
+  --surface: #162238;
+  --text: #F0E6D3;
+  --muted: #9BA8B5;
+  --accent: #4AA37E;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--deep); color: var(--text); min-height: 100vh; }
+
+/* NAV */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 2rem; display: flex; align-items: center;
+  justify-content: space-between;
+  background: rgba(13,27,42,0.97); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif; font-size: 1.1rem;
+  font-weight: 700; color: var(--gold); display: flex;
+  align-items: center; gap: 0.5rem; text-decoration: none;
+}
+.nav-logo img { width: 36px; height: 36px; }
+.back-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: rgba(201,168,76,0.12); border: 1.5px solid rgba(201,168,76,0.35);
+  color: var(--gold); padding: 0.45rem 1.2rem; border-radius: 50px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
+}
+.back-btn:hover { background: var(--gold); color: var(--deep); }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a { color: var(--text); text-decoration: none; font-size: 0.9rem; opacity: 0.8; transition: all 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); opacity: 1; }
+@media(max-width:900px){ .nav-links { display: none; } }
+
+/* HERO */
+.hero {
+  min-height: 60vh; position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; padding-top: 70px;
+}
+.hero-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; filter: brightness(0.35) saturate(1.2);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(13,27,42,1) 0%, rgba(13,27,42,0.3) 60%, transparent 100%);
+}
+.hero-content {
+  position: relative; z-index: 2; padding: 3rem 2rem 2.5rem;
+  max-width: 1100px; margin: 0 auto; width: 100%;
+}
+.district-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.35);
+  color: var(--gold); padding: 0.3rem 0.9rem; border-radius: 50px;
+  font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 1rem;
+}
+.attraction-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700; color: var(--text); line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+.attraction-subtitle {
+  font-size: 1rem; color: var(--muted); margin-bottom: 0;
+}
+
+/* CONTENT */
+.content-wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  display: grid; grid-template-columns: 1fr 380px;
+  gap: 3rem; align-items: start;
+}
+
+/* LEFT */
+.section-label {
+  font-size: 0.72rem; letter-spacing: 0.3em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.description {
+  color: var(--muted); font-size: 0.97rem; line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+
+/* PHOTO GRID */
+.photos-section { margin-bottom: 2.5rem; }
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+.photo-item {
+  border-radius: 12px; overflow: hidden; aspect-ratio: 4/3;
+  background: var(--surface); cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+}
+.photo-item:first-child {
+  grid-column: span 2; aspect-ratio: 16/9;
+}
+.photo-item:hover {
+  transform: scale(1.02); border-color: rgba(201,168,76,0.3);
+}
+.photo-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  opacity: 0; transition: opacity 0.5s ease;
+}
+.photo-item img.loaded { opacity: 1; }
+.photo-loading {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  justify-content: center; background: var(--surface);
+  color: var(--muted); font-size: 0.8rem;
+  transition: opacity 0.3s;
+}
+.photo-loading.hidden { opacity: 0; pointer-events: none; }
+
+/* LIGHTBOX */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw; max-height: 88vh; border-radius: 12px;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: rgba(255,255,255,0.1); border: none; color: #fff;
+  width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+/* FACTS */
+.facts-card {
+  background: var(--surface); border-radius: 18px;
+  border: 1px solid rgba(201,168,76,0.12);
+  padding: 1.75rem; margin-bottom: 2rem;
+  position: relative; overflow: hidden;
+}
+.facts-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--gold), var(--saffron));
+}
+.fact-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.fact-row:last-child { border-bottom: none; }
+.fact-key { font-size: 0.8rem; color: var(--muted); }
+.fact-val { font-size: 0.88rem; color: var(--text); font-weight: 600; text-align: right; }
+
+/* MAP */
+.map-card {
+  background: var(--surface); border-radius: 18px;
+  border: 1px solid rgba(201,168,76,0.12); overflow: hidden;
+  margin-bottom: 2rem;
+}
+.map-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.map-header h3 {
+  font-size: 0.9rem; font-weight: 600; color: var(--text);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.map-frame {
+  width: 100%; height: 260px; border: none; display: block;
+  filter: grayscale(25%) brightness(0.88);
+  transition: filter 0.4s;
+}
+.map-card:hover .map-frame { filter: grayscale(0) brightness(1); }
+.map-open-btn {
+  display: block; text-align: center; padding: 0.85rem;
+  background: rgba(201,168,76,0.08); color: var(--gold);
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  border: none; width: 100%; transition: background 0.2s;
+  text-decoration: none;
+}
+.map-open-btn:hover { background: rgba(201,168,76,0.18); }
+
+/* OTHER ATTRACTIONS */
+.other-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.other-chip {
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold); padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
+  text-decoration: none; display: inline-block;
+}
+.other-chip:hover { background: var(--gold); color: var(--deep); }
+.other-chip.current { background: var(--gold); color: var(--deep); cursor: default; }
+
+/* SPINNER */
+.spinner {
+  width: 28px; height: 28px; border: 3px solid rgba(201,168,76,0.2);
+  border-top-color: var(--gold); border-radius: 50%;
+  animation: spin 0.8s linear infinite; margin: auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .content-wrap { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(2,1fr); }
+  .photo-item:first-child { grid-column: span 2; }
+}
+@media (max-width: 520px) {
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-item:first-child { grid-column: span 1; }
+}
+
+
+
+
+
+
+
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0D1B2A;
+  padding: 3px 20px;
+  color: white;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* MENU */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* HAMBURGER */
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* MOBILE STYLE */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+   background: #0D1B2A;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="navbar">
+  <a href="../index.html" class="nav-logo">
+    <img src="../image/flag.png" alt="flag">Sri Lankan
+  </a>
+
+  <ul class="nav-links" id="menu">
+  <li><a href="../index.html#districts">Districts</a></li>
+    <li><a href="../index.html#videos">Videos</a></li>
+    <li><a href="../index.html#gallery">Photos</a></li>
+    <li><a href="../index.html#facts">Facts</a></li>
+    <li><a href="../index.html#wishlist">My List</a></li>
+    <li><a href="attraction.html" class="active">Attractions</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" id="heroImg" src="" alt="">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="district-badge" id="districtBadge">📍 District</div>
+    <h1 class="attraction-title" id="attractionTitle">Loading...</h1>
+    <p class="attraction-subtitle" id="attractionSubtitle"></p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- LEFT: Photos + Description -->
+  <div>
+    <!-- Photos -->
+    <div class="photos-section fade-in">
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">Photos</h2>
+      <div class="photo-grid" id="photoGrid">
+        <div class="photo-item"><div class="photo-loading"><div class="spinner"></div></div></div>
+        <div class="photo-item"><div class="photo-loading"><div class="spinner"></div></div></div>
+        <div class="photo-item"><div class="photo-loading"><div class="spinner"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="fade-in">
+      <p class="section-label">About</p>
+      <h2 class="section-title" id="aboutTitle">About this Place</h2>
+      <p class="description" id="description">Loading information...</p>
+    </div>
+
+    <!-- Other Attractions -->
+    <div class="fade-in">
+      <p class="section-label">More in this District</p>
+      <h2 class="section-title">Other Attractions</h2>
+      <div class="other-chips" id="otherChips"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Map + Facts -->
+  <div>
+    <!-- Map -->
+    <div class="map-card fade-in">
+      <div class="map-header">
+        <h3>🗺️ Location on Map</h3>
+      </div>
+      <iframe class="map-frame" id="mapFrame" src="" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a class="map-open-btn" id="mapOpenBtn" href="#" target="_blank">Open in Google Maps ↗</a>
+    </div>
+
+    <!-- Quick Facts -->
+    <div class="facts-card fade-in">
+      <p class="section-label" style="margin-bottom:1rem;">Quick Facts</p>
+      <div class="fact-row">
+        <span class="fact-key">District</span>
+        <span class="fact-val" id="factDistrict">—</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Province</span>
+        <span class="fact-val" id="factProvince">—</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Population</span>
+        <span class="fact-val" id="factPop">—</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Area</span>
+        <span class="fact-val" id="factArea">—</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Capital</span>
+        <span class="fact-val" id="factCapital">—</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+
+  function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+// ===== DISTRICT DATA =====
+const districts = [
+  { id:1, en:"Colombo", provinceEn:"Western Province", area:"676", pop:"2.3M", capital:"Colombo", descEn:"Sri Lanka's commercial capital and most densely populated district.", attractions:["Galle Face Green","National Museum","Colombo Fort","Beira Lake","Independence Square"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Colombo_Skyline_%282019%29.jpg/1280px-Colombo_Skyline_%282019%29.jpg" },
+  { id:2, en:"Gampaha", provinceEn:"Western Province", area:"1,387", pop:"2.3M", capital:"Negombo", descEn:"The second most populated district, home to Bandaranaike International Airport.", attractions:["Negombo Beach","International Airport","Hendala","Heewaheta"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Negombo_Beach.jpg/1280px-Negombo_Beach.jpg" },
+  { id:3, en:"Kalutara", provinceEn:"Western Province", area:"1,598", pop:"1.2M", capital:"Kalutara", descEn:"Situated on the banks of the Kalu River, famous for coconut production.", attractions:["Kalutara Bodhiya","Beruwala Fishing Harbour","Algiriya","Kalametiya Sanctuary"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Kalutara_Bodhiya.JPG/800px-Kalutara_Bodhiya.JPG" },
+  { id:4, en:"Kandy", provinceEn:"Central Province", area:"1,940", pop:"1.4M", capital:"Kandy", descEn:"Sri Lanka's great cultural capital, home to the UNESCO World Heritage Site Temple of the Sacred Tooth Relic.", attractions:["Temple of the Tooth Relic","Peradeniya Royal Botanic Gardens","Natha Devale","Kandy Lake"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Kandy_Lake.jpg/1280px-Kandy_Lake.jpg" },
+  { id:5, en:"Matale", provinceEn:"Central Province", area:"1,993", pop:"490K", capital:"Matale", descEn:"Home to the magnificent Sigiriya Rock Fortress.", attractions:["Sigiriya Rock Fortress","Dambulla Cave Temple","Nalanda Gedige","Sri Muthumari Amman Temple"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Sigiriya_03.jpg/1280px-Sigiriya_03.jpg" },
+  { id:6, en:"Nuwara Eliya", provinceEn:"Central Province", area:"1,741", pop:"767K", capital:"Nuwara Eliya", descEn:"Known as 'Little England', Sri Lanka's premier tea country.", attractions:["Gregory Lake","Horton Plains","Sri Pada (Adam's Peak)","Tea Estates","Lovers' Leap Falls"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Nuwara_Eliya_Tea_Estate_2010.jpg/1280px-Nuwara_Eliya_Tea_Estate_2010.jpg" },
+  { id:7, en:"Galle", provinceEn:"Southern Province", area:"1,652", pop:"1.1M", capital:"Galle", descEn:"Home to Galle Fort — a UNESCO World Heritage Site.", attractions:["Galle Fort","Lighthouse Beach","Hikkaduwa","National Maritime Museum"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Galle_Fort_aerial_view.jpg/1280px-Galle_Fort_aerial_view.jpg" },
+  { id:8, en:"Matara", provinceEn:"Southern Province", area:"1,283", pop:"814K", capital:"Matara", descEn:"A vibrant southern city famous for Mirissa whale watching and the historic Star Fort.", attractions:["Mirissa Beach","Blow Hole","Star Fort","Polhena Reef"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Mirissa_Beach_Sri_Lanka.jpg/1280px-Mirissa_Beach_Sri_Lanka.jpg" },
+  { id:9, en:"Hambantota", provinceEn:"Southern Province", area:"2,609", pop:"599K", capital:"Hambantota", descEn:"Gateway to Yala National Park.", attractions:["Yala National Park","Udawalawe","Bundala","Hambantota Port"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Yala-leopard.jpg/1280px-Yala-leopard.jpg" },
+  { id:10, en:"Jaffna", provinceEn:"Northern Province", area:"1,025", pop:"583K", capital:"Jaffna", descEn:"The cultural capital of northern Sri Lanka.", attractions:["Nallur Kandasamy Temple","Jaffna Fort","Nagadeepa Island","Casuarina Beach"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Nallur_Kandasamy_Kovil_%28temple%29.jpg/800px-Nallur_Kandasamy_Kovil_%28temple%29.jpg" },
+  { id:11, en:"Kilinochchi", provinceEn:"Northern Province", area:"1,279", pop:"114K", capital:"Kilinochchi", descEn:"A region of peace and renewal.", attractions:["Iranamadu Tank","Kilinochchi Peace Pagoda","Agricultural Villages"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Iranamadu_tank.jpg/800px-Iranamadu_tank.jpg" },
+  { id:12, en:"Mannar", provinceEn:"Northern Province", area:"1,996", pop:"100K", capital:"Mannar", descEn:"An island district home to Adam's Bridge.", attractions:["Mannar Fort","Giant's Tank","Adam's Bridge","Madhu Church"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mannar_island.jpg/1280px-Mannar_island.jpg" },
+  { id:13, en:"Vavuniya", provinceEn:"Northern Province", area:"1,967", pop:"172K", capital:"Vavuniya", descEn:"Known as the 'Gateway Town'.", attractions:["Vavuniya Fort","Cheddikulam Tank","Cheddikulam Bird Sanctuary"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Vavuniya_Bus_Station.jpg/800px-Vavuniya_Bus_Station.jpg" },
+  { id:14, en:"Mullaitivu", provinceEn:"Northern Province", area:"2,617", pop:"93K", capital:"Mullaitivu", descEn:"Unspoiled lagoons and pristine ocean coastline.", attractions:["Mullaitivu Beach","Nandikadal Lagoon","Kokkilai Lagoon"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Mullaitivu_beach.jpg/800px-Mullaitivu_beach.jpg" },
+  { id:15, en:"Batticaloa", provinceEn:"Eastern Province", area:"2,854", pop:"528K", capital:"Batticaloa", descEn:"Famous for pristine white sands of Pasikuda Beach.", attractions:["Pasikuda Beach","Batticaloa Fort","Kallady Bridge","Singing Fish"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Pasikuda_Beach.jpg/1280px-Pasikuda_Beach.jpg" },
+  { id:16, en:"Ampara", provinceEn:"Eastern Province", area:"4,415", pop:"650K", capital:"Ampara", descEn:"Home to Gal Oya National Park and Arugam Bay surf destination.", attractions:["Gal Oya National Park","Deegawapi Viharaya","Uhana","Arugam Bay"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Arugam_bay.jpg/1280px-Arugam_bay.jpg" },
+  { id:17, en:"Trincomalee", provinceEn:"Eastern Province", area:"2,727", pop:"380K", capital:"Trincomalee", descEn:"Home to one of the world's finest natural deep-water harbours.", attractions:["Nilaveli Beach","Pigeon Island","Koneswaram Temple","Trinco Fort"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nilaveli_Beach.jpg/1280px-Nilaveli_Beach.jpg" },
+  { id:18, en:"Kurunegala", provinceEn:"North Western Province", area:"4,816", pop:"1.6M", capital:"Kurunegala", descEn:"Known as the 'Kingdom of Coconut Trees'.", attractions:["Ridi Viharaya","Ethalgala Rock Fortress","Nalanda Gedige","Kurunegala Rock"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Kurunegala_Rock.JPG/1280px-Kurunegala_Rock.JPG" },
+  { id:19, en:"Puttalam", provinceEn:"North Western Province", area:"3,072", pop:"762K", capital:"Puttalam", descEn:"Home to Wilpattu National Park — Sri Lanka's largest national park.", attractions:["Wilpattu National Park","Kalpitiya Peninsula","Puttalam Lagoon","Dutch Bay"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Wilpattu.jpg/1280px-Wilpattu.jpg" },
+  { id:20, en:"Anuradhapura", provinceEn:"North Central Province", area:"7,179", pop:"860K", capital:"Anuradhapura", descEn:"Sri Lanka's greatest ancient city and UNESCO World Heritage Site.", attractions:["Sri Maha Bodhi","Ruwanwelisaya","Jetavanaramaya","Thuparamaya","Isurumuniya"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Sri_Maha_Bodhi.jpg/800px-Sri_Maha_Bodhi.jpg" },
+  { id:21, en:"Polonnaruwa", provinceEn:"North Central Province", area:"3,293", pop:"413K", capital:"Polonnaruwa", descEn:"Sri Lanka's second ancient capital and UNESCO World Heritage Site.", attractions:["Polonnaruwa Heritage Site","Gal Vihara","Rankoth Vehera","Parakrama Samudra"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Polonnaruwa_vatadage01.jpg/1280px-Polonnaruwa_vatadage01.jpg" },
+  { id:22, en:"Badulla", provinceEn:"Uva Province", area:"2,861", pop:"812K", capital:"Badulla", descEn:"The charming hill district of Ella draws travellers worldwide.", attractions:["Ella","Lipton's Seat","Dunhinda Falls","Bogoda Wooden Bridge"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Ella_Sri_Lanka_%2814530082665%29.jpg/1280px-Ella_Sri_Lanka_%2814530082665%29.jpg" },
+  { id:23, en:"Moneragala", provinceEn:"Uva Province", area:"5,639", pop:"451K", capital:"Moneragala", descEn:"A district of exceptional biodiversity.", attractions:["Maduru Oya National Park","Buduruvagala Rock Temple","Maligawila","Dambana Vedda Village"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Buduruvagala_rock_temple.jpg/800px-Buduruvagala_rock_temple.jpg" },
+  { id:24, en:"Ratnapura", provinceEn:"Sabaragamuwa Province", area:"3,275", pop:"1.1M", capital:"Ratnapura", descEn:"The 'City of Gems', world-famous for precious stones.", attractions:["Adam's Peak","Sinharaja Forest Reserve","Ratnapura Gem Museum","Bopath Ella Falls"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Sri_Pada_%28Adam%27s_Peak%29.jpg/800px-Sri_Pada_%28Adam%27s_Peak%29.jpg" },
+  { id:25, en:"Kegalle", provinceEn:"Sabaragamuwa Province", area:"1,693", pop:"841K", capital:"Kegalle", descEn:"Home to the world-famous Pinnawala Elephant Orphanage.", attractions:["Pinnawala Elephant Orphanage","Mawanella","Belilena Cave","Rambukkana"], img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pinnawela.jpg/1280px-Pinnawela.jpg" }
+];
+
+// ===== ATTRACTION DESCRIPTIONS =====
+const attractionDescriptions = {
+  "Galle Face Green": "A famous urban park and oceanside promenade in Colombo, stretching along the Indian Ocean. A beloved gathering spot for locals and tourists, known for street food, kite flying, and stunning sunsets.",
+  "National Museum": "The largest museum in Sri Lanka, housing an extensive collection of artefacts including royal regalia, ancient maps, and relics spanning over 2,500 years of Sri Lankan history and culture.",
+  "Colombo Fort": "The historic heart of Colombo, blending colonial-era architecture with the buzz of a modern financial district. Once a Portuguese and Dutch fortification, now a hub of commerce.",
+  "Beira Lake": "A beautiful 65-hectare lake in the heart of Colombo, surrounded by hotels and parks. A peaceful retreat in the city offering boat rides and scenic walks.",
+  "Independence Square": "A grand public plaza commemorating Sri Lanka's independence from British rule in 1948. The iconic Independence Memorial Hall stands at its centre, surrounded by lush gardens.",
+  "Negombo Beach": "A long, palm-fringed beach on Sri Lanka's west coast, famous for its fresh seafood, lively fish market, and relaxed atmosphere. Popular among both locals and international travellers.",
+  "Kalutara Bodhiya": "A sacred Buddhist temple built over a hollow stupa — one of only two such structures in the world. Located at the mouth of the Kalu River, it is a major pilgrimage site.",
+  "Temple of the Tooth Relic": "The sacred Sri Dalada Maligawa in Kandy, enshrining a tooth relic of the Buddha. A UNESCO World Heritage Site and one of the most important Buddhist pilgrimage sites in the world.",
+  "Peradeniya Royal Botanic Gardens": "Spread across 147 acres beside the Mahaweli River, these stunning gardens house over 4,000 species of plants, a famous avenue of royal palms, and an iconic orchid house.",
+  "Kandy Lake": "An artificial lake built in 1807 by the last Kandyan king. A serene centrepiece of Kandy city, perfect for evening walks with views of the cloud-covered hills.",
+  "Sigiriya Rock Fortress": "A UNESCO World Heritage Site rising 200m above the surrounding jungle. This ancient rock fortress built by King Kasyapa features stunning frescoes, mirror walls, and breathtaking views.",
+  "Dambulla Cave Temple": "The largest and best-preserved cave temple complex in Sri Lanka, with over 150 Buddha statues and murals covering more than 2,100 square metres. A UNESCO World Heritage Site.",
+  "Gregory Lake": "An artificial lake in the heart of Nuwara Eliya, created during British colonial times. Surrounded by manicured gardens, popular for boating, cycling, and scenic picnics.",
+  "Horton Plains": "A UNESCO World Heritage Site plateau at 2,100m above sea level, home to the famous World's End — a sheer cliff dropping 870m. A misty paradise for hikers.",
+  "Galle Fort": "A UNESCO World Heritage Site built by the Portuguese in the 16th century and fortified by the Dutch. The fort's cobblestone streets, colonial buildings, and ocean views make it unforgettable.",
+  "Hikkaduwa": "A vibrant beach town famous for its coral reef sanctuary, colourful marine life, and surf breaks. One of Sri Lanka's top diving and snorkelling destinations.",
+  "Mirissa Beach": "A crescent-shaped paradise beach on the southern coast, famous for whale and dolphin watching, its relaxed vibe, and stunning sunsets.",
+  "Yala National Park": "Sri Lanka's most visited wildlife park, home to one of the world's highest densities of leopards. Also a sanctuary for elephants, crocodiles, sloth bears, and hundreds of bird species.",
+  "Nallur Kandasamy Temple": "One of the most important Hindu temples in Sri Lanka, dedicated to Lord Murugan. The annual Nallur Festival draws thousands of devotees in a spectacular display of faith.",
+  "Jaffna Fort": "A large Dutch fort on the Jaffna peninsula, overlooking the lagoon. Built in the 17th century, it reflects layers of Portuguese, Dutch, and British colonial history.",
+  "Iranamadu Tank": "One of the largest ancient tanks in Sri Lanka, vital to the agricultural heartland of Kilinochchi. A haven for migratory birds and a lifeline for local farming communities.",
+  "Adam's Bridge": "Also known as Rama Setu, this chain of limestone shoals connects Sri Lanka to India. Believed to be the bridge described in the Hindu epic Ramayana.",
+  "Nilaveli Beach": "One of Sri Lanka's most pristine beaches, located north of Trincomalee. Crystal-clear turquoise waters, white sand, and nearby Pigeon Island Marine Sanctuary.",
+  "Pigeon Island": "A small marine sanctuary off Nilaveli Beach, offering some of the best snorkelling and diving in Sri Lanka. Home to blacktip reef sharks, sea turtles, and vibrant coral reefs.",
+  "Sri Maha Bodhi": "The oldest recorded tree in the world with a known planting date — planted in 288 BC. A branch of the original Bodhi tree under which the Buddha attained enlightenment.",
+  "Gal Vihara": "A magnificent rock temple in Polonnaruwa featuring four colossal Buddha statues carved into a single granite face. A UNESCO World Heritage Site and masterpiece of ancient Buddhist art.",
+  "Ella": "A breathtaking hill town surrounded by tea estates, jungle, and waterfalls. Famous for the Nine Arch Bridge, Ella Rock hike, and Little Adam's Peak.",
+  "Pinnawala Elephant Orphanage": "The world's only elephant orphanage, home to over 80 elephants. Visitors can watch elephants bathe in the Maha Oya River twice daily.",
+  "Sinharaja Forest Reserve": "Sri Lanka's last major rainforest and a UNESCO World Heritage Site. A biodiversity hotspot home to 64% of the island's endemic tree species and rare endemic birds.",
+  "Wilpattu National Park": "Sri Lanka's largest national park, famous for its unique 'villus' — natural lake basins. Home to leopards, sloth bears, elephants, and crocodiles.",
+  "Ruwanwelisaya": "A magnificent white dagoba in Anuradhapura, built by King Dutugemunu around 140 BC. One of the tallest ancient structures in the world.",
+  "Pasikuda Beach": "A shallow, calm lagoon beach on the east coast, famous for its crystal-clear turquoise waters. Perfect for swimming, with some of the flattest sea in Sri Lanka.",
+  "Arugam Bay": "A world-renowned surf destination on the east coast, consistently rated among the best surf spots in Asia.",
+  "Bopath Ella Falls": "A stunning fig-leaf-shaped waterfall near Ratnapura, one of Sri Lanka's most beautiful. The falls plunge 30 metres into a clear pool.",
+  "Adam's Peak": "A sacred mountain peak (2,243m) with a 'footprint' at its summit, revered by Buddhists, Hindus, Muslims and Christians alike. The night pilgrimage is a deeply spiritual Sri Lankan experience."
+};
+
+// ===== WIKIPEDIA SEARCH QUERIES per attraction =====
+// These are the exact Wikipedia search terms used to find real images via API
+const wikiSearchTerms = {
+  "Galle Face Green":              ["Galle Face Green Colombo", "Colombo seafront", "Galle Face promenade"],
+  "National Museum":               ["Colombo National Museum", "National Museum Sri Lanka", "Sri Lanka museum interior"],
+  "Colombo Fort":                  ["Colombo Fort Sri Lanka", "Fort Colombo railway station", "Colombo clock tower"],
+  "Beira Lake":                    ["Beira Lake Colombo", "Seema Malaka temple Beira Lake"],
+  "Independence Square":           ["Independence Memorial Hall Colombo", "Independence Square Sri Lanka"],
+  "Negombo Beach":                 ["Negombo beach Sri Lanka", "Negombo fishing boats"],
+  "International Airport":         ["Bandaranaike International Airport", "Katunayake airport Sri Lanka"],
+  "Kalutara Bodhiya":              ["Kalutara Bodhiya stupa", "Kalutara temple Sri Lanka"],
+  "Beruwala Fishing Harbour":      ["Beruwala harbour Sri Lanka", "Beruwala lighthouse mosque"],
+  "Temple of the Tooth Relic":     ["Sri Dalada Maligawa Kandy", "Temple of Tooth Relic Kandy"],
+  "Peradeniya Royal Botanic Gardens": ["Peradeniya Botanic Gardens Sri Lanka", "Royal Botanic Gardens Peradeniya"],
+  "Kandy Lake":                    ["Kandy Lake Sri Lanka", "Kandy lakeside Sri Lanka"],
+  "Sigiriya Rock Fortress":        ["Sigiriya rock fortress Sri Lanka", "Sigiriya frescoes", "Sigiriya aerial view"],
+  "Dambulla Cave Temple":          ["Dambulla cave temple Sri Lanka", "Golden Temple Dambulla"],
+  "Gregory Lake":                  ["Gregory Lake Nuwara Eliya", "Nuwara Eliya lake Sri Lanka"],
+  "Horton Plains":                 ["Horton Plains National Park", "World's End Sri Lanka cliff"],
+  "Sri Pada (Adam's Peak)":        ["Adam's Peak Sri Lanka", "Sri Pada mountain pilgrimage"],
+  "Galle Fort":                    ["Galle Fort Sri Lanka", "Galle Fort lighthouse", "Galle Fort walls"],
+  "Hikkaduwa":                     ["Hikkaduwa beach Sri Lanka", "Hikkaduwa coral reef"],
+  "Mirissa Beach":                 ["Mirissa beach Sri Lanka", "Mirissa whale watching"],
+  "Yala National Park":            ["Yala National Park leopard", "Yala elephants Sri Lanka"],
+  "Nallur Kandasamy Temple":       ["Nallur Kandasamy Kovil Jaffna", "Nallur temple festival"],
+  "Jaffna Fort":                   ["Jaffna Fort Sri Lanka", "Jaffna Fort Dutch colonial"],
+  "Iranamadu Tank":                ["Iranamadu tank Kilinochchi"],
+  "Adam's Bridge":                 ["Adam's Bridge Mannar Sri Lanka", "Rama Setu limestone shoals"],
+  "Nilaveli Beach":                ["Nilaveli beach Trincomalee", "Nilaveli Sri Lanka"],
+  "Pigeon Island":                 ["Pigeon Island Marine Sanctuary Sri Lanka", "Pigeon Island snorkelling"],
+  "Sri Maha Bodhi":                ["Sri Maha Bodhi tree Anuradhapura", "Jaya Sri Maha Bodhi"],
+  "Ruwanwelisaya":                 ["Ruwanwelisaya stupa Anuradhapura"],
+  "Gal Vihara":                    ["Gal Vihara Polonnaruwa Buddha", "Gal Vihara reclining Buddha"],
+  "Ella":                          ["Ella Sri Lanka", "Nine Arch Bridge Ella", "Ella Rock Sri Lanka"],
+  "Pinnawala Elephant Orphanage":  ["Pinnawala Elephant Orphanage Sri Lanka", "Pinnawala elephants bathing"],
+  "Sinharaja Forest Reserve":      ["Sinharaja Forest Reserve Sri Lanka", "Sinharaja rainforest"],
+  "Wilpattu National Park":        ["Wilpattu National Park Sri Lanka", "Wilpattu villu lake"],
+  "Pasikuda Beach":                ["Pasikuda beach Sri Lanka", "Pasikudah lagoon"],
+  "Arugam Bay":                    ["Arugam Bay surf Sri Lanka", "Arugam Bay beach"],
+  "Adam's Peak":                   ["Adam's Peak Sri Lanka", "Sri Pada mountain"],
+  "Bopath Ella Falls":             ["Bopath Ella waterfall Sri Lanka", "Bopath Falls Ratnapura"],
+  "Maduru Oya National Park":      ["Maduru Oya National Park Sri Lanka"],
+  "Buduruvagala Rock Temple":      ["Buduruvagala rock temple Sri Lanka"],
+  "Polonnaruwa Heritage Site":     ["Polonnaruwa ancient city Sri Lanka", "Polonnaruwa vatadage"],
+  "Parakrama Samudra":             ["Parakrama Samudra Polonnaruwa"],
+};
+
+// ===== UNSPLASH FALLBACK KEYWORDS (100% reliable, no auth needed via source.unsplash.com) =====
+const unsplashKeywords = {
+  "Galle Face Green":              "colombo-seafront",
+  "National Museum":               "museum-heritage",
+  "Colombo Fort":                  "colombo-city",
+  "Beira Lake":                    "city-lake",
+  "Independence Square":           "independence-monument",
+  "Negombo Beach":                 "beach-fishing-boats",
+  "Kalutara Bodhiya":              "buddhist-stupa",
+  "Temple of the Tooth Relic":     "kandy-temple",
+  "Peradeniya Royal Botanic Gardens": "botanical-garden-tropical",
+  "Kandy Lake":                    "kandy-lake",
+  "Sigiriya Rock Fortress":        "sigiriya-rock",
+  "Dambulla Cave Temple":          "cave-temple-buddha",
+  "Gregory Lake":                  "mountain-lake",
+  "Horton Plains":                 "mountain-plateau-mist",
+  "Galle Fort":                    "galle-fort",
+  "Hikkaduwa":                     "coral-reef-snorkelling",
+  "Mirissa Beach":                 "mirissa-beach",
+  "Yala National Park":            "leopard-wildlife",
+  "Nallur Kandasamy Temple":       "hindu-temple",
+  "Jaffna Fort":                   "colonial-fort",
+  "Nilaveli Beach":                "tropical-beach-clear-water",
+  "Pigeon Island":                 "coral-reef-island",
+  "Sri Maha Bodhi":                "bodhi-tree",
+  "Gal Vihara":                    "ancient-buddha-statue",
+  "Ella":                          "ella-sri-lanka",
+  "Pinnawala Elephant Orphanage":  "elephant-river-bath",
+  "Sinharaja Forest Reserve":      "rainforest-green",
+  "Wilpattu National Park":        "national-park-wildlife",
+  "Ruwanwelisaya":                 "white-stupa-dagoba",
+  "Pasikuda Beach":                "calm-lagoon-beach",
+  "Arugam Bay":                    "surfing-beach",
+  "Adam's Peak":                   "mountain-peak-pilgrimage",
+  "Bopath Ella Falls":             "waterfall-jungle",
+};
+
+// ===== INIT =====
+const params = new URLSearchParams(window.location.search);
+const districtId = parseInt(params.get('district')) || 1;
+const attractionName = decodeURIComponent(params.get('attraction') || '');
+
+const district = districts.find(d => d.id === districtId) || districts[0];
+const attraction = attractionName || district.attractions[0];
+
+// Page title
+document.title = `${attraction} — Sri Lankan`;
+
+// Hero
+document.getElementById('heroImg').src = district.img;
+document.getElementById('heroImg').alt = attraction;
+document.getElementById('districtBadge').textContent = `📍 ${district.en} District`;
+document.getElementById('attractionTitle').textContent = attraction;
+document.getElementById('attractionSubtitle').textContent = `${district.en} District, ${district.provinceEn}`;
+
+// Facts
+document.getElementById('factDistrict').textContent = district.en;
+document.getElementById('factProvince').textContent = district.provinceEn;
+document.getElementById('factPop').textContent = district.pop;
+document.getElementById('factArea').textContent = district.area + ' km²';
+document.getElementById('factCapital').textContent = district.capital;
+
+// Description
+const desc = attractionDescriptions[attraction] ||
+  `${attraction} is a notable attraction in the ${district.en} District of ${district.provinceEn}, Sri Lanka.`;
+document.getElementById('description').textContent = desc;
+document.getElementById('aboutTitle').textContent = `About ${attraction}`;
+
+// Other attractions chips
+const otherChips = document.getElementById('otherChips');
+district.attractions.forEach(a => {
+  const chip = document.createElement('a');
+  chip.className = 'other-chip' + (a === attraction ? ' current' : '');
+  chip.textContent = a;
+  if (a !== attraction) {
+    chip.href = `attraction.html?district=${districtId}&attraction=${encodeURIComponent(a)}`;
+  } else {
+    chip.style.cursor = 'default';
+  }
+  otherChips.appendChild(chip);
+});
+
+// ===== MAP =====
+const mapQuery = encodeURIComponent(attraction + ' Sri Lanka');
+const mapFallback = `https://maps.google.com/maps?q=${mapQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+document.getElementById('mapFrame').src = mapFallback;
+document.getElementById('mapOpenBtn').href = `https://www.google.com/maps/search/${mapQuery}`;
+
+// ===== PHOTO GRID =====
+// Strategy:
+//  1. Try Wikipedia Commons API (no CORS issues via action=query&prop=pageimages)
+//  2. Fallback: district hero image
+
+async function fetchWikipediaImages(searchTerms, count = 3) {
+  const results = [];
+
+  for (const term of searchTerms) {
+    if (results.length >= count) break;
+    try {
+      // Search Wikipedia for the page
+      const searchUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(term)}&srlimit=3&format=json&origin=*`;
+      const searchRes = await fetch(searchUrl);
+      const searchData = await searchRes.json();
+      const pages = searchData.query?.search || [];
+
+      for (const page of pages) {
+        if (results.length >= count) break;
+        // Get image for that page
+        const imgUrl = `https://en.wikipedia.org/w/api.php?action=query&pageids=${page.pageid}&prop=pageimages&pithumbsize=1000&format=json&origin=*`;
+        const imgRes = await fetch(imgUrl);
+        const imgData = await imgRes.json();
+        const pageData = imgData.query?.pages?.[page.pageid];
+        const thumb = pageData?.thumbnail?.source;
+        if (thumb && !results.includes(thumb)) {
+          results.push(thumb);
+        }
+      }
+    } catch(e) {
+      // silently skip
+    }
+  }
+  return results;
+}
+
+function getUnsplashFallback(index) {
+  // Use Unsplash source (no API key, random photo by keyword)
+  const keyword = unsplashKeywords[attraction] || 'sri-lanka-travel';
+  // Use different seeds per photo slot
+  return `https://source.unsplash.com/featured/800x600/?${encodeURIComponent(keyword)}&sig=${districtId * 100 + index}`;
+}
+
+function buildPhotoItem(src, index, grid) {
+  const item = document.createElement('div');
+  item.className = 'photo-item';
+  if (index === 0) item.style.gridColumn = 'span 2';
+
+  const loader = document.createElement('div');
+  loader.className = 'photo-loading';
+  loader.innerHTML = '<div class="spinner"></div>';
+
+  const img = document.createElement('img');
+  img.alt = attraction;
+  img.loading = 'lazy';
+
+  img.onload = () => {
+    img.classList.add('loaded');
+    loader.classList.add('hidden');
+  };
+
+  img.onerror = () => {
+    // Try Unsplash fallback
+    const fallback = getUnsplashFallback(index);
+    if (img.src !== fallback && img.src !== district.img) {
+      img.src = fallback;
+    } else if (img.src !== district.img) {
+      img.src = district.img;
+    } else {
+      loader.innerHTML = '📷';
+      loader.style.fontSize = '2rem';
+    }
+  };
+
+  img.src = src;
+  item.appendChild(loader);
+  item.appendChild(img);
+  item.addEventListener('click', () => openLightbox(img.src));
+  grid.appendChild(item);
+}
+
+async function buildPhotoGrid() {
+  const grid = document.getElementById('photoGrid');
+  grid.innerHTML = ''; // clear spinners
+
+  const searchTerms = wikiSearchTerms[attraction] ||
+    [`${attraction} Sri Lanka`, `${attraction}`, district.en + ' Sri Lanka'];
+
+  // Show 3 placeholder items immediately
+  for (let i = 0; i < 3; i++) {
+    const item = document.createElement('div');
+    item.className = 'photo-item';
+    if (i === 0) item.style.gridColumn = 'span 2';
+    item.innerHTML = '<div class="photo-loading"><div class="spinner"></div></div>';
+    grid.appendChild(item);
+  }
+
+  // Fetch from Wikipedia API
+  let photos = await fetchWikipediaImages(searchTerms, 3);
+
+  // Pad with fallbacks if needed
+  while (photos.length < 3) {
+    photos.push(getUnsplashFallback(photos.length));
+  }
+
+  // If no Wikipedia results at all, use district image as first
+  if (photos.length === 0) {
+    photos = [district.img, getUnsplashFallback(1), getUnsplashFallback(2)];
+  }
+
+  // Rebuild grid with real images
+  grid.innerHTML = '';
+  photos.forEach((src, i) => buildPhotoItem(src, i, grid));
+}
+
+buildPhotoGrid();
+
+// ===== LIGHTBOX =====
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+});
+</script>
+</body>
+</html>

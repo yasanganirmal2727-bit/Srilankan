@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Lanka — 25 Districts</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --maroon: #8B1A1A;
+  --deep: #0D1B2A;
+  --mid: #1A2F45;
+  --surface: #162238;
+  --text: #F0E6D3;
+  --muted: #9BA8B5;
+  --accent: #4AA37E;
+  --saffron: #E8862A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--deep);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ========= HERO ========= */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0D1B2A;
+}
+
+.hero-bg video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.38) saturate(1.3);
+}
+
+.hero-bg-fallback {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Sigiriya_mirror_wall.jpg/1280px-Sigiriya_mirror_wall.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13,27,42,0.2) 0%,
+    rgba(13,27,42,0.5) 60%,
+    rgba(13,27,42,1) 100%
+  );
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139,26,26,0.1) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-flag {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-sinhala {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(201,168,76,0.4);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero-english {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.hero-tagline {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.8;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+
+
+
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0D1B2A;
+  padding: 10px 20px;
+  color: white;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* MENU */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* HAMBURGER */
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* MOBILE STYLE */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+   background: #0D1B2A;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+
+
+
+.scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  color: var(--deep);
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.scroll-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(201,168,76,0.4);
+}
+
+/* ========= NAV ========= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.nav-logo img{
+width: 40px;
+height: 40px;
+
+
+}
+
+.navbar.scrolled {
+  background: rgba(13,27,42,0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.navbar img
+{
+width: 25px;
+height: 25px;
+
+}
+
+.nav-logo {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+  opacity: 1;
+}
+
+.lang-toggle {
+  background: rgba(201,168,76,0.15);
+  border: 1.5px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.lang-toggle:hover {
+  background: var(--gold);
+  color: var(--deep);
+}
+.lang-toggle img{
+
+  width: 20px;
+  height: 20px;
+
+
+}
+
+/* ========= SECTION HEADERS ========= */
+.section-header {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.section-title {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  line-height: 1.8;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--saffron));
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ========= PROVINCE FILTER ========= */
+.province-filter {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 2rem 3rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1.5px solid rgba(201,168,76,0.3);
+  color: var(--muted);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  border-color: transparent;
+  color: var(--deep);
+  font-weight: 600;
+}
+
+/* ========= DISTRICTS GRID ========= */
+.districts-section {
+  padding: 0 2rem 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.districts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.district-card {
+  background: var(--surface);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.district-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201,168,76,0.3);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+}
+
+.district-card.hidden {
+  display: none;
+}
+
+.card-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.district-card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(22,34,56,0.9) 0%, transparent 60%);
+}
+
+.card-province-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(13,27,42,0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.card-number {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(201,168,76,0.5);
+  line-height: 1;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-name-si {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.card-name-en {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.card-desc {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.card-facts {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.fact-icon {
+  font-size: 1rem;
+}
+
+.fact-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.fact-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+.card-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.highlight-tag {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--gold);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+/* ========= VIDEO SECTION ========= */
+.videos-section {
+  background: var(--mid);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.videos-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201,168,76,0.25);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.video-thumb-wrap {
+  position: relative;
+}
+
+.video-thumb-wrap iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+  border: none;
+}
+
+.video-info {
+  padding: 1.25rem;
+}
+
+.video-title {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.video-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+/* ========= GALLERY ========= */
+.gallery-section {
+  padding: 6rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 220px);
+  gap: 1rem;
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item.span-2 { grid-column: span 2; grid-row: span 2; }
+.gallery-item.tall { grid-row: span 2; }
+
+.gallery-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(13,27,42,0.9), transparent);
+  padding: 1rem 0.75rem 0.75rem;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+/* ========= QUICK FACTS BANNER ========= */
+.facts-banner {
+  background: linear-gradient(135deg, var(--maroon) 0%, #5C1A1A 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.facts-banner::before {
+  content: '🦁';
+  position: absolute;
+  font-size: 20rem;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.facts-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.banner-fact {
+  position: relative;
+}
+
+.banner-fact-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.banner-fact-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.banner-fact-label {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(240,230,211,0.7);
+}
+
+/* ========= FOOTER ========= */
+footer {
+  background: var(--deep);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.footer-logo img
+{
+
+width: 30px;
+height: 30px;
+
+
+}
+.footer-tagline {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  color: rgba(155,168,181,0.5);
+  font-size: 0.75rem;
+}
+
+/* ========= MODAL ========= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--surface);
+  border-radius: 24px;
+  max-width: 700px;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.2);
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-overlay.open .modal {
+  transform: scale(1) translateY(0);
+}
+
+.modal-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-province {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.modal-title-si {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.modal-title-en {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.modal-desc {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-stat {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.modal-stat-icon { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.modal-stat-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+}
+.modal-stat-lbl {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+.modal-attractions {
+  margin-bottom: 1.5rem;
+}
+
+.modal-attractions h4 {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.attractions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.attraction-chip {
+  background: rgba(74,163,126,0.1);
+  border: 1px solid rgba(74,163,126,0.25);
+  color: var(--accent);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.attraction-chip:hover {
+  background: var(--accent);
+  color: var(--deep);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74,163,126,0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(13,27,42,0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--maroon);
+  border-color: var(--maroon);
+}
+
+.modal-wrapper { position: relative; }
+
+/* ========= SEARCH ========= */
+.search-wrap {
+  max-width: 500px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid rgba(201,168,76,0.25);
+  border-radius: 50px;
+  padding: 1rem 1.5rem 1rem 3.5rem;
+  color: var(--text);
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input::placeholder { color: var(--muted); }
+.search-input:focus { border-color: rgba(201,168,76,0.6); }
+
+.search-icon {
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+.search-icon img{
+
+  width: 25px;
+  height: 25px;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .gallery-item.span-2, .gallery-item.tall {
+    grid-column: unset;
+    grid-row: unset;
+  }
+  .modal-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { gap: 1.5rem; }
+}
+
+.modal-grid img{
+
+  width: 30px;
+  height: 30px;
+
+
+
+}
+
+/* ========= ANIMATIONS ========= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.district-card { opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+
+/* ========= WISHLIST BUTTON ON CARD ========= */
+.card-wishlist-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(13,27,42,0.75);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  z-index: 5;
+}
+.card-wishlist-btn:hover { transform: scale(1.15); border-color: #e74c3c; }
+.card-wishlist-btn.wishlisted { background: rgba(231,76,60,0.85); border-color: #e74c3c; }
+.card-visited-badge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(74,163,126,0.85);
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: none;
+  z-index: 5;
+  letter-spacing: 0.05em;
+}
+.card-visited-badge.show { display: block; }
+
+/* ========= WISHLIST SECTION ========= */
+.wishlist-section {
+  background: linear-gradient(135deg, #0D1B2A 0%, #1A2F45 100%);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.wishlist-section::before {
+  content: '❤️';
+  position: absolute;
+  font-size: 18rem;
+  opacity: 0.03;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.wishlist-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+.wishlist-empty-icon { font-size: 4rem; margin-bottom: 1rem; }
+.wishlist-empty-text {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.wishlist-card {
+  background: var(--surface);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.12);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  animation: fadeInUp 0.5s ease forwards;
+}
+.wishlist-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  transform: translateY(-4px);
+}
+.wishlist-card-top {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+.wishlist-card-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.wishlist-card:hover .wishlist-card-top img { transform: scale(1.05); }
+.wishlist-card-top-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(22,34,56,0.85) 0%, transparent 60%);
+}
+.wishlist-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+.wishlist-card-name {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.wishlist-card-province { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.05em; }
+.card-body img{
+
+  width: 30px;
+  height: 30px;
+
+
+}
+
+.wishlist-empty img{
+
+width: 200px;
+height: 200px;
+
+}
+
+
+/* ========= BEAUTIFUL RATING SYSTEM ========= */
+.rating-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.rating-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rating-title {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.rating-current-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  min-width: 80px;
+  text-align: right;
+  transition: all 0.3s;
+}
+.rating-stars-row {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+.rating-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: grayscale(1) opacity(0.3);
+  transform-origin: center bottom;
+}
+.rating-star.active {
+  filter: grayscale(0) opacity(1);
+  animation: starPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.rating-star:hover {
+  transform: scale(1.35) translateY(-4px);
+  filter: grayscale(0) opacity(0.85);
+}
+@keyframes starPop {
+  0%   { transform: scale(0.5) rotate(-15deg); }
+  60%  { transform: scale(1.4) rotate(8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.rating-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 0.1rem;
+}
+.rating-bar-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--gold), var(--saffron));
+  transition: width 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+  width: 0%;
+}
+/* Confetti burst on rating */
+@keyframes confettiBurst {
+  0%   { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
+}
+.confetti-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: confettiBurst 0.6s ease forwards;
+}
+.visited-row {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.visited-checkbox-wrap {
+  display: flex; align-items: center; gap: 0.5rem; cursor: pointer;
+}
+.visited-checkbox-wrap input { display: none; }
+.visited-track {
+  width: 40px; height: 22px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50px; position: relative;
+  transition: background 0.2s;
+  border: 1.5px solid rgba(255,255,255,0.1);
+}
+.visited-checkbox-wrap input:checked + .visited-track { background: var(--accent); border-color: var(--accent); }
+.visited-thumb {
+  width: 16px; height: 16px; background: #fff;
+  border-radius: 50%; position: absolute;
+  top: 50%; left: 2px; transform: translateY(-50%);
+  transition: left 0.2s;
+}
+.visited-checkbox-wrap input:checked + .visited-track .visited-thumb { left: 20px; }
+.visited-label {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.8rem; color: var(--muted);
+}
+.wishlist-note {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  color: var(--text);
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.8rem;
+  resize: none; outline: none;
+  transition: border-color 0.2s;
+  min-height: 60px;
+}
+.wishlist-note::placeholder { color: rgba(155,168,181,0.5); }
+.wishlist-note:focus { border-color: rgba(201,168,76,0.4); }
+.wishlist-remove-btn {
+  background: rgba(231,76,60,0.1);
+  border: 1.5px solid rgba(231,76,60,0.2);
+  color: #e74c3c; border-radius: 8px;
+  padding: 0.5rem; font-size: 0.75rem;
+  cursor: pointer;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  transition: all 0.2s; text-align: center;
+}
+.wishlist-remove-btn:hover { background: rgba(231,76,60,0.2); border-color: #e74c3c; }
+.wishlist-nav-badge {
+  background: #e74c3c; color: #fff;
+  border-radius: 50%; width: 18px; height: 18px;
+  font-size: 0.65rem; font-weight: 700;
+  display: none; align-items: center; justify-content: center;
+  margin-left: 4px; vertical-align: middle;
+}
+.wishlist-nav-badge.show { display: inline-flex; }
+.wishlist-stats-bar {
+  display: flex; gap: 2rem; justify-content: center;
+  flex-wrap: wrap; margin: 0 auto 2.5rem; max-width: 600px;
+}
+.wl-stat { text-align: center; }
+.wl-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1;
+}
+.wl-stat-lbl {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem;
+}
+.modal-wishlist-row {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 1rem 0 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 1rem;
+}
+.modal-add-wish-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  border: none; color: #fff;
+  padding: 0.7rem 1.4rem; border-radius: 50px;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(231,76,60,0.3);
+}
+.modal-add-wish-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(231,76,60,0.4); }
+.modal-add-wish-btn.added { background: linear-gradient(135deg, #2ecc71, #27ae60); box-shadow: 0 4px 15px rgba(46,204,113,0.3); }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="navbar">
+  <a href="" class="nav-logo">
+    <img src="image/flag.png" alt="flag">Sri Lankan
+  </a>
+
+  <ul class="nav-links" id="menu">
+  <li><a href="#districts" data-si="දිස්ත්‍රික්ක" data-en="Districts">Districts</a></li>
+    <li><a href="#videos" data-si="වීඩියෝ" data-en="Videos">Video</Video></a></li>
+    <li><a href="#gallery" data-si="ඡායාරූප" data-en="Photos">Image</a></li>
+    <li><a href="#facts" data-si="කරුණු" data-en="Facts">Facts</a></li>
+    <li><a href="web/about.html">About Us</a></li>
+    <li><a href="web/contact.html">Contact</a></li>
+  </ul>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-fallback"></div>
+    <video
+      id="heroBgVideo"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      oncanplay="this.style.opacity='1'"
+      style="opacity:0; transition: opacity 1.5s ease;"
+    >
+      <source src="image/video/bg-video.mp4"video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-flag"></div>
+    <h1 class="hero-sinhala">Sri Lanka</h1>
+    <p class="hero-english">Pearl of the Indian Ocean</p>
+    <p class="hero-tagline t" data-si="ඉන්දියන් සාගරයේ මැදුළේ රත්නයක් — සොබාදහමේ ශිල්ප කෞශල්‍ය, ඉතිහාසයේ ගැඹුර, සහ ජනතාවගේ උණුසුම ඔබව ආශ්චර්යයට පත් කරනු ඇත." data-en="A gem in the heart of the Indian Ocean — nature's artistry, the depth of history, and the warmth of its people will leave you in wonder.">A gem in the heart of the Indian Ocean — nature's artistry, the depth of history, and the warmth of its people will leave you in wonder.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">25</div>
+        <div class="stat-label t" data-si="දිස්ත්‍රික්ක" data-en="Districts">Districts</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">9</div>
+        <div class="stat-label t" data-si="පළාත්" data-en="Provinces">Provinces</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">21.9M</div>
+        <div class="stat-label t" data-si="ජනගහනය" data-en="Population">Population</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">65,610</div>
+        <div class="stat-label t" data-si="km² භූමිය" data-en="km² Land Area">km² Land Area</div>
+      </div>
+    </div>
+    <button class="scroll-btn t" data-si="Explore Districts ↓" data-en="Explore Districts ↓" onclick="document.getElementById('districts').scrollIntoView({behavior:'smooth'})">
+      Explore districts↓
+    </button>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section id="districts">
+  <div class="section-header">
+    <p class="section-label">Sri Lanka Districts</p>
+    <h2 class="section-title t" data-si="දිස්ත්‍රික්ක 25" data-en="25 Districts">25 Districts</h2>
+    <p class="section-sub t" data-si="ශ්‍රී ලංකාව පළාත් 9කට සහ දිස්ත්‍රික්ක 25කට බෙදා ඇත. ඒ සෑම දිස්ත්‍රික්කයකම තමාටම ආවේණික ස්වභාවය, ඉතිහාසය, සහ සංස්කෘතිය ඇත." data-en="Sri Lanka is divided into 9 provinces and 25 districts. Each district has its own unique character, history, and culture."> 
+Sri Lanka is divided into 9 provinces and 25 districts. Each district has its own unique character, history, and culture.</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="search-wrap">
+    <span class="search-icon"><img src="image/icon/search (1).png"></span>
+    <input type="text" class="search-input" id="searchInput" oninput="filterDistricts()"
+      data-si="දිස්ත්‍රික්කයක් සොයන්න..." data-en="Search a district..."
+      placeholder="Search a district...">
+  </div>
+
+  <div class="province-filter">
+    <button class="filter-btn active t" data-si="සියල්ල" data-en="All" onclick="filterByProvince('all', this)">All</button>
+    <button class="filter-btn t" data-si="බස්නාහිර" data-en="Western" onclick="filterByProvince('western', this)">Western</button>
+    <button class="filter-btn t" data-si="මධ්‍යම" data-en="Central" onclick="filterByProvince('central', this)">Central</button>
+    <button class="filter-btn t" data-si="දකුණු" data-en="Southern" onclick="filterByProvince('southern', this)">Southern</button>
+    <button class="filter-btn t" data-si="උතුරු" data-en="Northern" onclick="filterByProvince('northern', this)">Northern</button>
+    <button class="filter-btn t" data-si="නැගෙනහිර" data-en="Eastern" onclick="filterByProvince('eastern', this)">Eastern</button>
+    <button class="filter-btn t" data-si="වයඹ" data-en="North Western" onclick="filterByProvince('northwest', this)">North Western</button>
+    <button class="filter-btn t" data-si="උතුරු මැද" data-en="North Central" onclick="filterByProvince('northcentral', this)">North Central</button>
+    <button class="filter-btn t" data-si="ඌව" data-en="Uva" onclick="filterByProvince('uva', this)">Uva</button>
+    <button class="filter-btn t" data-si="සබරගමුව" data-en="Sabaragamuwa" onclick="filterByProvince('sabaragamuwa', this)">Sabaragamuwa</button>
+  </div>
+
+  <div class="districts-section">
+    <div class="districts-grid" id="districtsGrid"></div>
+  </div>
+</section>
+
+<!-- QUICK FACTS BANNER -->
+<section class="facts-banner" id="facts">
+  <div class="section-header" style="padding-top:0">
+    <p class="section-label" style="color:rgba(232,201,122,0.8)">Quick Facts</p>
+    <h2 class="section-title t" data-si="ශ්‍රී ලංකාව ගැන කරුණු" data-en="Facts About Sri Lanka">Facts About Sri Lanka</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="facts-banner-grid">
+    <div class="banner-fact">
+      <div class="banner-fact-icon">🏛️</div>
+      <div class="banner-fact-number">2,600+</div>
+      <div class="banner-fact-label t" data-si="වසරක ඉතිහාසය" data-en="Years of History">Years of History</div>
+    </div>
+    <div class="banner-fact">
+      <div class="banner-fact-icon">🌿</div>
+      <div class="banner-fact-number">8</div>
+      <div class="banner-fact-label t" data-si="UNESCO ලෝක උරුම" data-en="UNESCO World Heritage Sites">UNESCO World Heritage Sites</div>
+    </div>
+    <div class="banner-fact">
+      <div class="banner-fact-icon">☕</div>
+      <div class="banner-fact-number">3rd</div>
+      <div class="banner-fact-label t" data-si="තේ නිෂ්පාදකයා ලෝකයේ" data-en="Largest Tea Producer in the World">Largest Tea Producer in the World</div>
+    </div>
+    <div class="banner-fact">
+      <div class="banner-fact-icon">🐘</div>
+      <div class="banner-fact-number">6,000+</div>
+      <div class="banner-fact-label t" data-si="ශ්‍රී ලංකා අලි" data-en="Sri Lankan Elephants">Sri Lankan Elephants</div>
+    </div>
+    <div class="banner-fact">
+      <div class="banner-fact-icon">🏖️</div>
+      <div class="banner-fact-number">1,340</div>
+      <div class="banner-fact-label t" data-si="km වෙරළ තීරය" data-en="km of Coastline">km of Coastline</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="videos-section" id="videos">
+  <div class="section-header" style="padding-top:0">
+    <p class="section-label">Watch & Explore</p>
+    <h2 class="section-title t" data-si="ශ්‍රී ලංකාව — වීඩියෝ" data-en="Sri Lanka — Videos">Sri Lanka — Videos</h2>
+    <p class="section-sub t" data-si="ශ්‍රී ලංකාවේ සුන්දරත්වය දෙස් විදෙස් ක්‍රියාකාරීන් ඔවුන්ගේ ඇස්වලින් දැකගන්න" data-en="Discover the beauty of Sri Lanka through the eyes of local and international creators">Discover the beauty of Sri Lanka through the eyes of local and international creators</p>
+    <div class="divider"></div>
+  </div>
+  <div class="videos-grid" style="padding-top:2rem">
+    <div class="video-card">
+      <div class="video-thumb-wrap">
+        <iframe src="image/video/14577647_2560_1440_60fps.mp4"Sri Lanka Travel" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-title t" data-si="Visit to Sri Lanka" data-en="Travelling Sri Lanka">Visit to Sri Lanka.</div>
+        <div class="video-sub">Travel & Tourism — Complete Guide</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb-wrap">
+        <iframe src="image/video/beach.mp4" title="Sri Lanka Nature" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-title t" data-si="ශ්‍රී ලංකාවේ ස්වභාව සෞන්දර්යය" data-en="Natural Beauty of Sri Lanka">Natural Beauty of Sri Lanka</div>
+        <div class="video-sub">Nature & Wildlife Documentary</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb-wrap">
+        <iframe src="image/video/bg-video.mp4" title="Sigiriya" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-title t" data-si="සීගිරිය — ආශ්චර්ය ගල් කොටුව" data-en="Sigiriya — The Incredible Rock Fortress">Sigiriya — The Incredible Rock Fortress</div>
+        <div class="video-sub">Ancient Rock Fortress of Sri Lanka</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header">
+    <p class="section-label">Photo Gallery</p>
+    <h2 class="section-title t" data-si="ශ්‍රී ලංකාව ඡායාරූප" data-en="Sri Lanka Photos">Sri Lanka Photos</h2>
+    <p class="section-sub t" data-si="ශ්‍රී ලංකාවේ විවිධ සුන්දරත්වය — ඉහළ කඳු, සාගර වෙරළ, පෞරාණික නගර, සහ හරිත තේ වතු" data-en="The diverse beauty of Sri Lanka — highlands, ocean beaches, ancient cities, and lush tea estates">The diverse beauty of Sri Lanka — highlands, ocean beaches, ancient cities, and lush tea estates</p>
+    <div class="divider"></div>
+  </div>
+  <div class="gallery-section">
+    <div class="gallery-grid">
+      <div class="gallery-item span-2">
+        <img src="image/kevin-olson-I4emZm0Wam8-unsplash.jpg" alt="Ella" loading="lazy">
+        <div class="gallery-label">Ella — Uva Province</div>
+      </div>
+      <div class="gallery-item tall">
+        <img src="image/sander-traa-bfdshIHD5Y4-unsplash.jpg" alt="Sigiriya" loading="lazy">
+        <div class="gallery-label">Sigiriya — Matale</div>
+      </div>
+      <div class="gallery-item">
+        <img src="image/dinuka-lankaloka-iduEaeBB_rQ-unsplash.jpg" alt="Mirissa" loading="lazy">
+        <div class="gallery-label">Mirissa Beach — Matara</div>
+      </div>
+      <div class="gallery-item">
+        <img src="image/vasanth-kedige-nPUPi2FKfGI-unsplash.jpg" alt="Tea Estate" loading="lazy">
+        <div class="gallery-label">Nuwara Eliya — Tea Estates</div>
+      </div>
+      <div class="gallery-item">
+        <img src="image/hendrik-cornelissen-lTC-4cz8whA-unsplash.jpg" alt="Polonnaruwa" loading="lazy">
+        <div class="gallery-label">Polonnaruwa — National Heritage</div>
+      </div>
+      <div class="gallery-item span-2">
+        <img src="image/kandy.jpg" alt="Kandy" loading="lazy">
+        <div class="gallery-label">Kandy — Temple of the Tooth Relic</div>
+      </div>
+      <div class="gallery-item">
+        <img src="image/matt-dany-iitTkHI4Tqw-unsplash.jpg" alt="Galle Fort" loading="lazy">
+        <div class="gallery-label">Galle Fort — Galle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WISHLIST SECTION -->
+<section class="wishlist-section" id="wishlist">
+  <div class="section-header" style="padding-top:0">
+    <p class="section-label">My Travel List</p>
+    <h2 class="section-title t" data-si="මගේ සංචාර ලිස්ට් " data-en="My Travel Wishlist ">My Travel Wishlist</h2>
+    <p class="section-sub t"
+      data-si="Click the heart button on any district card to add it to your list. Rate it, mark it as visited, and add personal notes."
+      data-en="Click the  button on any district card to add it here. Rate it, mark it visited, and add your own notes.">
+      Click the  button on any district card to add it here. Rate it, mark it visited, and add your own notes.
+    </p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="wishlist-stats-bar" id="wishlistStatsBar" style="display:none">
+    <div class="wl-stat">
+      <div class="wl-stat-num" id="wlTotalCount">0</div>
+      <div class="wl-stat-lbl t" data-si="ස්ථාන" data-en="Places">Places</div>
+    </div>
+    <div class="wl-stat">
+      <div class="wl-stat-num" id="wlVisitedCount">0</div>
+      <div class="wl-stat-lbl t" data-si="visited" data-en="Visited">Visited ✅</div>
+    </div>
+    <div class="wl-stat">
+      <div class="wl-stat-num" id="wlRatedCount">0</div>
+      <div class="wl-stat-lbl t" data-si="rated" data-en="Rated">Rated ⭐</div>
+    </div>
+  </div>
+
+  <div id="wishlistEmpty" class="wishlist-empty">
+    <div class="wishlist-empty-icon"><img src="image/icon/pngwing.com.png"></div>
+    <p class="wishlist-empty-text t"
+      data-si="Your travel wishlist is empty.<br>Click the heart button on district cards to start adding places!"
+      data-en="Your travel list is empty.<br>Click the  button on any district card to add places!">
+      Your travel wishlist is empty.<br>Click the heart button on district cards to start adding places!
+    </p>
+  </div>
+
+  <div class="wishlist-grid" id="wishlistGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="image/icon/flag.png"> Sri Lanka</div>
+  <p class="footer-tagline t" data-si="ඉන්දියන් සාගරයේ මැදුළ — Pearl of the Indian Ocean" data-en="Pearl of the Indian Ocean">Pearl of the Indian Ocean</p>
+  <div class="footer-links">
+    <a href="https://www.srilanka.travel" target="_blank">srilanka.travel</a>
+    <a href="https://www.tourism.gov.lk" target="_blank">tourism.gov.lk</a>
+    <a href="https://en.wikipedia.org/wiki/Sri_Lanka" target="_blank">Wikipedia</a>
+  </div>
+  <p class="footer-copy">© yasanganirmal592@gmail.com/2025 Sri Lanka Info Portal</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('open')">✕</button>
+    <div class="modal" id="modal">
+      <img src="" alt="" class="modal-image" id="modalImg">
+      <div class="modal-body">
+        <p class="modal-province" id="modalProvince"></p>
+        <h2 class="modal-title-si" id="modalTitleSi"></h2>
+        <p class="modal-title-en" id="modalTitleEn"></p>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-grid">
+          <div class="modal-stat">
+            <div class="modal-stat-icon"><img src="image/icon/society.png"></div>
+            <div class="modal-stat-val" id="modalPop"></div>
+            <div class="modal-stat-lbl">Population</div>
+          </div>
+          <div class="modal-stat">
+            <div class="modal-stat-icon"><img src="image/icon/trees.png"></div>
+            <div class="modal-stat-val" id="modalArea"></div>
+            <div class="modal-stat-lbl">Area km²</div>
+          </div>
+          <div class="modal-stat">
+            <div class="modal-stat-icon"><img src="image/icon/cityscape.png"></div>
+            <div class="modal-stat-val" id="modalCapital"></div>
+            <div class="modal-stat-lbl">Capital City</div>
+          </div>
+        </div>
+        <div class="modal-attractions">
+          <h4>🌟 Top Attractions</h4>
+          <div class="attractions-list" id="modalAttractions"></div>
+        </div>
+        <div class="modal-wishlist-row">
+          <button class="modal-add-wish-btn" id="modalWishBtn" onclick="toggleWishlistFromModal()">
+            🤍 <span id="modalWishBtnText">Add to Wishlist</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+
+const districts = [
+  // Western Province
+  { id:1, si:"කොළඹ", en:"Colombo", province:"western", provinceSi:"බස්නාහිර පළාත", provinceEn:"Western Province", area:"676", pop:"2.3M", capital:"Colombo", desc:"ශ්‍රී ලංකාවේ වාණිජ අගනගරය. ජනාකීර්ණතම දිස්ත්‍රික්කය. නූතන ගොඩනැගිලි, ඉතිහාස ස්ථාන, සහ සාගර ගම්ම්", descEn:"Sri Lanka's commercial capital and most densely populated district. A vibrant blend of modern skyscrapers, historic landmarks, and coastal living.", attractions:["Galle Face Green","National Museum","Colombo Fort","Beira Lake","Independence Square"], img:"image/colombo.jpg" },
+  { id:2, si:"ගම්පහ", en:"Gampaha", province:"western", provinceSi:"බස්නාහිර පළාත", provinceEn:"Western Province", area:"1,387", pop:"2.3M", capital:"Negombo", desc:"ජනාකීර්ණ දෙවන දිස්ත්‍රික්කය. නෙගොඹෝ ජාත්‍යන්තර ගුවන් තොටුපළ ස්ථිත ප්‍රදේශය. ධීවර ජනාවාස සහ ලලිත ගම්", descEn:"The second most populated district, home to Bandaranaike International Airport. Known for its fishing communities and scenic coastal villages.", attractions:["Negombo Beach","International Airport","Hendala","Heewaheta"], img:"image/gampaha.jpg" },
+  { id:3, si:"කළුතර", en:"Kalutara", province:"western", provinceSi:"බස්නාහිර පළාත", provinceEn:"Western Province", area:"1,598", pop:"1.2M", capital:"Kalutara", desc:"කළු ගඟේ ඉවුරේ ස්ථිත ශ්‍රී ලංකාවේ නාරිකෙල් නිෂ්පාදනය සඳහා ප්‍රසිද්ධ. සුන්දර වෙරළ ගාස්", descEn:"Situated on the banks of the Kalu River, famous for coconut production. Known for beautiful beach resorts and the iconic Kalutara Bodhiya.", attractions:["Kalutara Bodhiya","Beruwala Fishing Harbour","Algiriya","Kalametiya Sanctuary"], img:"image/kaluthara.JPG" },
+  // Central Province
+  { id:4, si:"මහනුවර", en:"Kandy", province:"central", provinceSi:"මධ්‍යම පළාත", provinceEn:"Central Province", area:"1,940", pop:"1.4M", capital:"Kandy", desc:"ශ්‍රී ලංකාවේ ශ්‍රේෂ්ඨ සංස්කෘතික අගනගරය. UNESCO ලෝක උරුම ශ්‍රී දළදා මාළිගාව ස්ථිත.", descEn:"Sri Lanka's great cultural capital. Home to the UNESCO World Heritage Site Temple of the Sacred Tooth Relic, set among misty mountains.", attractions:["Temple of the Tooth Relic","Peradeniya Royal Botanic Gardens","Natha Devale","Kandy Lake"], img:"image/kandy.jpg" },
+  { id:5, si:"මාතලේ", en:"Matale", province:"central", provinceSi:"මධ්‍යම පළාත", provinceEn:"Central Province", area:"1,993", pop:"490K", capital:"Matale", desc:"සීගිරිය ශිලා දුර්ගය ඇති ශ්‍රේෂ්ඨ ඓතිහාසික ප්‍රදේශය. දළදා ගෙවල් සහ කුළු‌ බඩු ගොවිතැන.", descEn:"Home to the magnificent Sigiriya Rock Fortress. Famous for spice gardens and historic temples. A key cultural district in the central region.", attractions:["Sigiriya Rock Fortress","Dambulla Cave Temple","Nalanda Gedige","Sri Muthumari Amman Temple"], img:"image/matale.jpg" },
+  { id:6, si:"නුවරඑළිය", en:"Nuwara Eliya", province:"central", provinceSi:"මධ්‍යම පළාත", provinceEn:"Central Province", area:"1,741", pop:"767K", capital:"Nuwara Eliya", desc:"'ලිට්ල් ඉංලන්ත' ලෙස හැඳින්වෙන සීතල කඳු ප්‍රදේශය. ශ්‍රී ලංකාවේ හොඳම තේ ද්‍රෝණිය. මල් උද්‍යාන.", descEn:"Known as 'Little England', this cool highland district is Sri Lanka's premier tea country. Famous for flower gardens, waterfalls, and the misty landscape.", attractions:["Gregory Lake","Horton Plains","Sri Pada (Adam's Peak)","Tea Estates","Lovers' Leap Falls"], img:"image/nuwaraeliya.jpg" },
+  // Southern Province
+  { id:7, si:"ගාල්ල", en:"Galle", province:"southern", provinceSi:"දකුණු පළාත", provinceEn:"Southern Province", area:"1,652", pop:"1.1M", capital:"Galle", desc:"ගාලු කොටුව — UNESCO ලෝක උරුම. ලන්දේසි යුගයේ ආරක්ෂිත බිත්ති. දකුණු ශ්‍රී ලංකාවේ සාගර රජ.", descEn:"Home to Galle Fort — a UNESCO World Heritage Site with Dutch colonial-era fortified walls. The cultural jewel of southern Sri Lanka.", attractions:["Galle Fort","Lighthouse Beach","Hikkaduwa","National Maritime Museum"], img:"image/Galle.jpg" },
+  { id:8, si:"මාතර", en:"Matara", province:"southern", provinceSi:"දකුණු පළාත", provinceEn:"Southern Province", area:"1,283", pop:"814K", capital:"Matara", desc:"දකුණු ශ්‍රී ලංකාවේ ජනාකීර්ණ නගරය. මිරිස්ස තිමිංගල නැරඹීම සහ ස්ටාර් ෆෝර්ට් ලෙස ප්‍රසිද්ධ.", descEn:"A vibrant southern city famous for Mirissa whale watching and the historic Star Fort. A favourite among surfers and beach lovers.", attractions:["Mirissa Beach","Blow Hole","Star Fort","Polhena Reef"], img:"image/Mather.jpg" },
+  { id:9, si:"හම්බන්තොට", en:"Hambantota", province:"southern", provinceSi:"දකුණු පළාත", provinceEn:"Southern Province", area:"2,609", pop:"599K", capital:"Hambantota", desc:"ශ්‍රී ලංකාවේ නව ව්‍යාපෘති ආශ්‍රිත ජිල්ලාව. Mattala ගුවන් තොටුපළ, ලුණු ව්‍යාපාරය.", descEn:"A district of major new development projects including Mattala Airport and the Hambantota Port. Gateway to Yala National Park.", attractions:["Yala National Park","Udawalawe","Bundala","Hambantota Port"], img:"image/hambanthota.jpg" },
+  // Northern Province
+  { id:10, si:"යාපනය", en:"Jaffna", province:"northern", provinceSi:"උතුරු පළාත", provinceEn:"Northern Province", area:"1,025", pop:"583K", capital:"Jaffna", desc:"ශ්‍රී ලංකාවේ උතුරු සංස්කෘතික අගනගරය. හින්දු දේවාලවල ජල ප්‍රභේදය. ශ්‍රී ලංකා දෙමළ ජනතාවගේ ඓතිහාසික නගරය.", descEn:"The cultural capital of northern Sri Lanka and historic heart of the Tamil community. Renowned for its Hindu temples, lagoons, and unique cuisine.", attractions:["Nallur Kandasamy Temple","Jaffna Fort","Nagadeepa Island","Casuarina Beach"], img:"image/jafffna.jpg" },
+  { id:11, si:"කිළිනොච්චිය", en:"Kilinochchi", province:"northern", provinceSi:"උතුරු පළාත", provinceEn:"Northern Province", area:"1,279", pop:"114K", capital:"Kilinochchi", desc:"1984 දී ජාෆ්නා ජිල්ලාව ලෙස නිර්‍මිත. සාම හා නව දිවියේ ළිගු ප්‍රදේශය.", descEn:"Created in 1984 from the Jaffna district. A region of peace and renewal, home to the vast Iranamadu Tank and agricultural communities.", attractions:["Iranamadu Tank","Kilinochchi Peace Pagoda","Agricultural Villages"], img:"image/Kilinochchi.jpg" },
+  { id:12, si:"මන්නාරම", en:"Mannar", province:"northern", provinceSi:"උතුරු පළාත", provinceEn:"Northern Province", area:"1,996", pop:"100K", capital:"Mannar", desc:"ශ්‍රී ලංකාවේ ද්‍රෝණිය. ආදම් බ්‍රිජ් (Rama Setu) ස්ථිත. ජලජ ජීවිත ශ්‍රේෂ්ඨ ආශ්‍රය.", descEn:"An island district connected by causeway, home to Adam's Bridge (Rama Setu) and the sacred Madhu Church. A haven for marine life.", attractions:["Mannar Fort","Giant's Tank","Adam's Bridge","Madhu Church"], img:"image/mannar.jpg" },
+  { id:13, si:"වව්නියාව", en:"Vavuniya", province:"northern", provinceSi:"උතුරු පළාත", provinceEn:"Northern Province", area:"1,967", pop:"172K", capital:"Vavuniya", desc:"ශ්‍රී ලංකාවේ ගේට්‍වේ ටවුන. උතුරු-දකුණු සම්බන්ධකය.", descEn:"Known as the 'Gateway Town', Vavuniya is the critical link between northern and southern Sri Lanka. A growing hub of trade and transit.", attractions:["Vavuniya Fort","Cheddikulam Tank","Cheddikulam Bird Sanctuary"], img:"image/vavuniya.jpg" },
+  { id:14, si:"මුලතිව්", en:"Mullaitivu", province:"northern", provinceSi:"උතුරු පළාත", provinceEn:"Northern Province", area:"2,617", pop:"93K", capital:"Mullaitivu", desc:"ශ්‍රී ලංකාවේ ස්වල්පතම ජනාකීර්ණ ජිල්ලාව. කළපු, ජාතික වනොද්‍යාන, සාගර.", descEn:"Sri Lanka's least populated district, featuring unspoiled lagoons, national parks, and pristine ocean coastline. A district of natural tranquility.", attractions:["Mullaitivu Beach","Nandikadal Lagoon","Kokkilai Lagoon"], img:"image/mulathive.jpg" },
+  // Eastern Province
+  { id:15, si:"මඩකලපුව", en:"Batticaloa", province:"eastern", provinceSi:"නැගෙනහිර පළාත", provinceEn:"Eastern Province", area:"2,854", pop:"528K", capital:"Batticaloa", desc:"Pasikuda සුදු වෙරළ ප්‍රසිද්ධ. නෙළුම් කළපු. ලන්දේසි ගොඩනැගිලි.", descEn:"Famous for the pristine white sands of Pasikuda Beach. Known for its beautiful lotus lagoons, Dutch-era architecture, and the mysterious 'Singing Fish'.", attractions:["Pasikuda Beach","Batticaloa Fort","Kallady Bridge","Singing Fish"], img:"image/batticola.jpg" },
+  { id:16, si:"අම්පාර", en:"Ampara", province:"eastern", provinceSi:"නැගෙනහිර පළාත", provinceEn:"Eastern Province", area:"4,415", pop:"650K", capital:"Ampara", desc:"1961 දී නිර්‍මිත. Gal Oya ජලාශ නිර්‍මිත. ශ්‍රේෂ්ඨ ජෛව විවිධත්ව.", descEn:"Created in 1961, home to Gal Oya National Park — one of Sri Lanka's most biodiverse ecosystems. Arugam Bay is a world-class surf destination.", attractions:["Gal Oya National Park","Deegawapi Viharaya","Uhana","Arugam Bay"], img:"image/ampara.jpg" },
+  { id:17, si:"ත්‍රිකුණාමලය", en:"Trincomalee", province:"eastern", provinceSi:"නැගෙනහිර පළාත", provinceEn:"Eastern Province", area:"2,727", pop:"380K", capital:"Trincomalee", desc:"ලෝකයේ ස්වභාවික ගැඹුරු නැව් නාභිය. Whale watching, Pigeon Island. Deep blue waters.", descEn:"Home to one of the world's finest natural deep-water harbours. Famous for whale watching, Pigeon Island Marine Sanctuary, and Nilaveli Beach.", attractions:["Nilaveli Beach","Pigeon Island","Koneswaram Temple","Trinco Fort"], img:"image/trencomoli.jpg" },
+  // North Western
+  { id:18, si:"කුරුණෑගල", en:"Kurunegala", province:"northwest", provinceSi:"වයඹ පළාත", provinceEn:"North Western Province", area:"4,816", pop:"1.6M", capital:"Kurunegala", desc:"ශ්‍රී ලංකාවේ ගෙඩි ගස් රාජධානිය. නාළන්ද, රිදී විහාරය. ශ්‍රී ලංකාවේ ශ්‍රේෂ්ඨ ගොවිතැන.", descEn:"Known as the 'Kingdom of Coconut Trees'. Home to Ridi Viharaya and the ancient Nalanda Gedige. One of Sri Lanka's most agriculturally rich districts.", attractions:["Ridi Viharaya","Ethalgala Rock Fortress","Nalanda Gedige","Kurunegala Rock"], img:"image/Kurunegala.JPG" },
+  { id:19, si:"පුත්තලම", en:"Puttalam", province:"northwest", provinceSi:"වයඹ පළාත", provinceEn:"North Western Province", area:"3,072", pop:"762K", capital:"Puttalam", desc:"Wilpattu ජාතික වනෝද්‍යානය. ලෙලෝ ජලාශය. ශ්‍රී ලංකාවේ ලවණ කර්‍මාන්ත.", descEn:"Home to Wilpattu National Park — Sri Lanka's largest national park. Known for its salt industry, Kalpitiya Peninsula, and Dutch Bay lagoons.", attractions:["Wilpattu National Park","Kalpitiya Peninsula","Puttalam Lagoon","Dutch Bay"], img:"image/puttalama.jpg" },
+  // North Central
+  { id:20, si:"අනුරාධපුරය", en:"Anuradhapura", province:"northcentral", provinceSi:"උතුරු මැද පළාත", provinceEn:"North Central Province", area:"7,179", pop:"860K", capital:"Anuradhapura", desc:"ශ්‍රී ලංකාවේ ශ්‍රේෂ්ඨ ඓතිහාසික නගරය. UNESCO ලෝක උරුම. ශ්‍රී මහා බෝධිය ස්ථිත.", descEn:"Sri Lanka's greatest ancient city and a UNESCO World Heritage Site. Home to the Sri Maha Bodhi — the oldest recorded tree in the world — and towering dagobas.", attractions:["Sri Maha Bodhi","Ruwanwelisaya","Jetavanaramaya","Thuparamaya","Isurumuniya"], img:"image/anuradhpura.jpg" },
+  { id:21, si:"පොළොන්නරුව", en:"Polonnaruwa", province:"northcentral", provinceSi:"උතුරු මැද පළාත", provinceEn:"North Central Province", area:"3,293", pop:"413K", capital:"Polonnaruwa", desc:"ශ්‍රී ලංකාවේ දෙවන ජාතික ඓතිහාසික අගනගරය. UNESCO ලෝක උරුම. ශ්‍රේෂ්ඨ ඓතිහාස.", descEn:"Sri Lanka's second ancient capital and UNESCO World Heritage Site. The Gal Vihara rock sculptures are among the finest ancient Buddhist art in Asia.", attractions:["Polonnaruwa Heritage Site","Gal Vihara","Rankoth Vehera","Parakrama Samudra"], img:"image/polonnaruwa.jpg" },
+  // Uva
+  { id:22, si:"බදුල්ල", en:"Badulla", province:"uva", provinceSi:"ඌව පළාත", provinceEn:"Uva Province", area:"2,861", pop:"812K", capital:"Badulla", desc:"ශ්‍රී ලංකාවේ සුළු ඉංග්‍රීසි ඌව. ඇල්ල, ලිප්ටන් ස්ලිට, දෙවන් ෆෝල්ස්. ශ්‍රේෂ්ඨ පිළිගෑ.", descEn:"The charming hill district of Ella draws travellers worldwide. Home to Lipton's Seat, Dunhinda Falls, and the iconic Nine Arch Bridge train route.", attractions:["Ella","Lipton's Seat","Dunhinda Falls","Bogoda Wooden Bridge"], img:"image/badulla.jpg" },
+  { id:23, si:"මොණරාගල", en:"Moneragala", province:"uva", provinceSi:"ඌව පළාත", provinceEn:"Uva Province", area:"5,639", pop:"451K", capital:"Moneragala", desc:"ශ්‍රී ලංකාවේ ශ්‍රේෂ්ඨ ජෛව විවිධත්ව ප්‍රදේශය. Gal Oya, Maduru Oya. ශ්‍රේෂ්ඨ ස්ථාන.", descEn:"A district of exceptional biodiversity with Maduru Oya National Park. Home to the Vedda indigenous community at Dambana and ancient rock temples.", attractions:["Maduru Oya National Park","Buduruvagala Rock Temple","Maligawila","Dambana Vedda Village"], img:"image/monaragala1.jpg" },
+  // Sabaragamuwa
+  { id:24, si:"රත්නපුරය", en:"Ratnapura", province:"sabaragamuwa", provinceSi:"සබරගමුව පළාත", provinceEn:"Sabaragamuwa Province", area:"3,275", pop:"1.1M", capital:"Ratnapura", desc:"රත්නපුරය — 'මාණික්‍ය නගරය'. ශ්‍රී ලංකාවේ ශ්‍රේෂ්ඨ ශ්‍රී පාදය. මෝණ ගල් ක්‍ෂේත්‍ර.", descEn:"The 'City of Gems' — Ratnapura is world-famous for its precious stones. Home to Adam's Peak pilgrimage site and the Sinharaja Forest Reserve.", attractions:["Adam's Peak","Sinharaja Forest Reserve","Ratnapura Gem Museum","Bopath Ella Falls"], img:"image/rathnapura.jpg" },
+  { id:25, si:"කෑගල්ල", en:"Kegalle", province:"sabaragamuwa", provinceSi:"සබරගමුව පළාත", provinceEn:"Sabaragamuwa Province", area:"1,693", pop:"841K", capital:"Kegalle", desc:"Pinnawala අලි අනාථාගාරය ස්ථිත. ශ්‍රී ලංකාවේ ශ්‍රේෂ්ඨ රබර් නිෂ්පාදන.", descEn:"Home to the world-famous Pinnawala Elephant Orphanage, where you can watch elephants bathe in the river. One of Sri Lanka's leading rubber-producing districts.", attractions:["Pinnawala Elephant Orphanage","Mawanella","Belilena Cave","Rambukkana"], img:"image/kaglle1.jpg" }
+];
+
+let currentLang = 'si';
+
+function toggleLang() {
+  currentLang = currentLang === 'si' ? 'en' : 'si';
+  const btn = document.getElementById('langToggle');
+  btn.textContent = currentLang === 'si' ? '🌐 EN' : '🌐 සිං';
+
+  // Update all .t elements
+  document.querySelectorAll('.t').forEach(el => {
+    const val = el.dataset[currentLang];
+    if (val) el.textContent = val;
+  });
+
+  // Update search placeholder
+  const si = document.getElementById('searchInput');
+  si.placeholder = currentLang === 'si' ? 'Search a district...' : 'Search a district...';
+
+  // Update modal stat labels
+  document.querySelector('#modal .modal-stat-lbl:nth-of-type(1)') && updateModalLabels();
+
+  // Re-render cards
+  renderDistricts(districts);
+}
+
+function updateModalLabels() {
+  const lbls = document.querySelectorAll('.modal-stat-lbl');
+  if (lbls[0]) lbls[0].textContent = currentLang === 'si' ? 'Population' : 'Population';
+  if (lbls[1]) lbls[1].textContent = currentLang === 'si' ? 'Area' : 'Area';
+  if (lbls[2]) lbls[2].textContent = currentLang === 'si' ? 'Capital City' : 'Main City';
+}
+
+function renderDistricts(list) {
+  const grid = document.getElementById('districtsGrid');
+  grid.innerHTML = '';
+  const L = currentLang;
+  list.forEach((d, i) => {
+    const el = document.createElement('div');
+    el.className = 'district-card';
+    el.setAttribute('data-province', d.province);
+    el.setAttribute('data-name', (d.si + ' ' + d.en).toLowerCase());
+    el.style.animationDelay = (i * 0.05) + 's';
+    const badgeName = d.provinceEn;
+    const nameMain = d.en;
+    const nameSub = d.en + ' District';
+    const desc = d.descEn;
+    const lblPop = L === 'si' ? 'Population' : 'Population';
+    const lblArea = L === 'si' ? 'Area' : 'Area';
+    const lblCity = 'City';
+    const isWishlisted = wishlist[d.id] !== undefined;
+    const isVisited = wishlist[d.id]?.visited || false;
+    el.innerHTML = `
+      <div class="card-image">
+        <img src="${d.img}" alt="${d.en}" loading="lazy" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/24701-nature-natural-beauty.jpg/1280px-24701-nature-natural-beauty.jpg'">
+        <div class="card-image-overlay"></div>
+        <span class="card-province-badge">${badgeName}</span>
+        <span class="card-number">${String(d.id).padStart(2,'0')}</span>
+        <button class="card-wishlist-btn ${isWishlisted ? 'wishlisted' : ''}" onclick="event.stopPropagation(); toggleWishlist(${d.id})" title="Wishlist add/remove">
+          ${isWishlisted ? '❤️' : '🤍'}
+        </button>
+        <span class="card-visited-badge ${isVisited ? 'show' : ''}" id="visitedBadge_${d.id}">✅ Visited</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name-si">${nameMain}</div>
+        <div class="card-name-en">${nameSub}</div>
+        <div class="card-desc">${desc.substring(0,130)}...</div>
+        <div class="card-facts">
+          <div class="fact">
+            <span class="fact-icon"><img src="image/icon/society.png"></span>
+            <span class="fact-value">${d.pop}</span>
+            <span class="fact-label">${lblPop}</span>
+          </div>
+          <div class="fact">
+            <span class="fact-icon"><img src="image/icon/trees.png"></span>
+            <span class="fact-value">${d.area} km²</span>
+            <span class="fact-label">${lblArea}</span>
+          </div>
+          <div class="fact">
+            <span class="fact-icon"><img src="image/icon/cityscape.png"></span>
+            <span class="fact-value">${d.capital}</span>
+            <span class="fact-label">${lblCity}</span>
+          </div>
+        </div>
+        <div class="card-highlights">
+          ${d.attractions.slice(0,3).map(a=>`<span class="highlight-tag">${a}</span>`).join('')}
+        </div>
+      </div>`;
+    el.addEventListener('click', () => openModal(d));
+    grid.appendChild(el);
+  });
+}
+
+let currentProvince = 'all';
+let searchTerm = '';
+
+function filterDistricts() {
+  searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  applyFilters();
+}
+
+function filterByProvince(province, btn) {
+  currentProvince = province;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.district-card');
+  cards.forEach(card => {
+    const pMatch = currentProvince === 'all' || card.dataset.province === currentProvince;
+    const sMatch = !searchTerm || card.dataset.name.includes(searchTerm);
+    card.classList.toggle('hidden', !(pMatch && sMatch));
+  });
+}
+
+let currentModalDistrict = null;
+
+function openModal(d) {
+  currentModalDistrict = d;
+  const L = currentLang;
+  document.getElementById('modalImg').src = d.img;
+  document.getElementById('modalProvince').textContent = d.provinceEn;
+  document.getElementById('modalTitleSi').textContent = d.en;
+  document.getElementById('modalTitleEn').textContent = d.en + ' District';
+  document.getElementById('modalDesc').textContent = d.descEn;
+  document.getElementById('modalPop').textContent = d.pop;
+  document.getElementById('modalArea').textContent = d.area + ' km²';
+  document.getElementById('modalCapital').textContent = d.capital;
+  document.getElementById('modalAttractions').innerHTML = d.attractions.map(a=>`<a class="attraction-chip" href="web/attraction.html?district=${d.id}&attraction=${encodeURIComponent(a)}" title="View details">📍 ${a}</a>`).join('');
+
+  const lbls = document.querySelectorAll('.modal-stat-lbl');
+  if (lbls[0]) lbls[0].textContent = L === 'si' ? 'Population' : 'Population';
+  if (lbls[1]) lbls[1].textContent = L === 'si' ? 'Area' : 'Area';
+  if (lbls[2]) lbls[2].textContent = L === 'si' ? 'Capital City' : 'Main City';
+
+  const attTitle = document.querySelector('.modal-attractions h4');
+  if (attTitle) attTitle.textContent = L === 'si' ? '🌟 Top Attractions' : '🌟 Top Attractions';
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  updateModalWishBtn();
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// Video background
+const bgVideo = document.getElementById('heroBgVideo');
+if (bgVideo) {
+  bgVideo.addEventListener('canplay', function() {
+    this.style.opacity = '1';
+  });
+  bgVideo.play().catch(() => {
+    bgVideo.style.display = 'none';
+  });
+  document.addEventListener('touchstart', function() {
+    bgVideo.play().catch(() => {});
+  }, { once: true });
+}
+
+// ============ WISHLIST SYSTEM ============
+let wishlist = {};
+try { wishlist = JSON.parse(localStorage.getItem('sl_wishlist') || '{}'); } catch(e) { wishlist = {}; }
+
+function saveWishlist() {
+  try { localStorage.setItem('sl_wishlist', JSON.stringify(wishlist)); } catch(e) {}
+}
+
+function toggleWishlist(id) {
+  const d = districts.find(x => x.id === id);
+  if (!d) return;
+  if (wishlist[id]) {
+    delete wishlist[id];
+  } else {
+    wishlist[id] = { id, rating: 0, visited: false, note: '' };
+  }
+  saveWishlist();
+  renderDistricts(districts);
+  applyFilters();
+  renderWishlist();
+  updateWishlistBadge();
+  // Update modal button if open
+  if (currentModalDistrict && currentModalDistrict.id === id) updateModalWishBtn();
+}
+
+function toggleWishlistFromModal() {
+  if (!currentModalDistrict) return;
+  toggleWishlist(currentModalDistrict.id);
+}
+
+function updateModalWishBtn() {
+  const btn = document.getElementById('modalWishBtn');
+  const txt = document.getElementById('modalWishBtnText');
+  if (!btn || !currentModalDistrict) return;
+  const inList = !!wishlist[currentModalDistrict.id];
+  btn.classList.toggle('added', inList);
+  btn.innerHTML = inList
+    ? `✅ <span>${currentLang === 'si' ? 'In Your List' : 'In Your List'}</span>`
+    : `🤍 <span>${currentLang === 'si' ? 'Add to Wishlist' : 'Add to Wishlist'}</span>`;
+}
+
+function updateWishlistBadge() {
+  const badge = document.getElementById('wishlistNavBadge');
+  const count = Object.keys(wishlist).length;
+  if (badge) {
+    badge.textContent = count;
+    badge.classList.toggle('show', count > 0);
+  }
+}
+
+function setRating(id, rating, btnEl) {
+  if (!wishlist[id]) return;
+  wishlist[id].rating = rating;
+  saveWishlist();
+  updateWishlistStats();
+
+  // Update stars visually without full re-render
+  const wrap = document.getElementById('ratingWrap_' + id);
+  if (wrap) {
+    wrap.querySelectorAll('.rating-star').forEach((btn, i) => {
+      btn.classList.toggle('active', i < rating);
+    });
+    // Update label
+    const ratingEmojis = ['','😐','🙂','😊','😍','🤩'];
+    const ratingTexts = {
+      si: ['','Not great','Okay','Good','Very good','Amazing!'],
+      en: ['','Not great','Okay','Good','Very good','Amazing!']
+    };
+    const lbl = document.getElementById('ratingLbl_' + id);
+    if (lbl) {
+      lbl.textContent = `${ratingEmojis[rating]} ${ratingTexts[currentLang][rating]}`;
+      lbl.style.transform = 'scale(1.2)';
+      setTimeout(() => lbl.style.transform = '', 300);
+    }
+    // Update bar
+    const bar = document.getElementById('ratingBar_' + id);
+    if (bar) bar.style.width = (rating / 5 * 100) + '%';
+  }
+
+  // Confetti burst on clicked star
+  if (btnEl) {
+    const colors = ['#f1c40f','#e74c3c','#3498db','#2ecc71','#e67e22'];
+    for (let i = 0; i < 10; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'confetti-dot';
+      const angle = (Math.random() * 360);
+      const dist = 30 + Math.random() * 40;
+      dot.style.cssText = `
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        left:50%; top:50%;
+        --tx:${Math.cos(angle)*dist}px;
+        --ty:${Math.sin(angle)*dist}px;
+        animation-duration:${0.4+Math.random()*0.3}s;
+      `;
+      btnEl.style.position = 'relative';
+      btnEl.appendChild(dot);
+      setTimeout(() => dot.remove(), 800);
+    }
+  }
+}
+
+function previewRating(id, hoverVal) {
+  const wrap = document.getElementById('ratingWrap_' + id);
+  if (!wrap) return;
+  wrap.querySelectorAll('.rating-star').forEach((btn, i) => {
+    btn.style.filter = i < hoverVal ? 'grayscale(0) opacity(1)' : 'grayscale(1) opacity(0.25)';
+    btn.style.transform = i < hoverVal ? 'scale(1.15) translateY(-3px)' : '';
+  });
+  const ratingTexts = {
+    si: ['','Not great','Okay','Good','Very good','Amazing!'],
+    en: ['','Not great','Okay','Good','Very good','Amazing!']
+  };
+  const emojis = ['','😐','🙂','😊','😍','🤩'];
+  const lbl = document.getElementById('ratingLbl_' + id);
+  if (lbl) lbl.textContent = `${emojis[hoverVal]} ${ratingTexts[currentLang][hoverVal]}`;
+}
+
+function clearRatingPreview(id) {
+  const wrap = document.getElementById('ratingWrap_' + id);
+  if (!wrap) return;
+  const saved = wishlist[id]?.rating || 0;
+  wrap.querySelectorAll('.rating-star').forEach((btn, i) => {
+    btn.style.filter = '';
+    btn.style.transform = '';
+    btn.classList.toggle('active', i < saved);
+  });
+  const ratingEmojis = ['','😐','🙂','😊','😍','🤩'];
+  const ratingTexts = {
+    si: ['','Not great','Okay','Good','Very good','Amazing!'],
+    en: ['','Not great','Okay','Good','Very good','Amazing!']
+  };
+  const lbl = document.getElementById('ratingLbl_' + id);
+  if (lbl) lbl.textContent = saved > 0
+    ? `${ratingEmojis[saved]} ${ratingTexts[currentLang][saved]}`
+    : (currentLang === 'si' ? 'Not rated' : 'Not rated');
+}
+
+function setVisited(id, val) {
+  if (!wishlist[id]) return;
+  wishlist[id].visited = val;
+  saveWishlist();
+  // Update badge on district card
+  const badge = document.getElementById('visitedBadge_' + id);
+  if (badge) badge.classList.toggle('show', val);
+  updateWishlistStats();
+}
+
+function setNote(id, text) {
+  if (!wishlist[id]) return;
+  wishlist[id].note = text;
+  saveWishlist();
+}
+
+function removeFromWishlist(id) {
+  delete wishlist[id];
+  saveWishlist();
+  renderDistricts(districts);
+  applyFilters();
+  renderWishlist();
+  updateWishlistBadge();
+}
+
+function updateWishlistStats() {
+  const ids = Object.keys(wishlist);
+  const total = ids.length;
+  const visited = ids.filter(id => wishlist[id].visited).length;
+  const rated = ids.filter(id => wishlist[id].rating > 0).length;
+  document.getElementById('wlTotalCount').textContent = total;
+  document.getElementById('wlVisitedCount').textContent = visited;
+  document.getElementById('wlRatedCount').textContent = rated;
+  document.getElementById('wishlistStatsBar').style.display = total > 0 ? 'flex' : 'none';
+}
+
+function renderWishlist() {
+  const grid = document.getElementById('wishlistGrid');
+  const empty = document.getElementById('wishlistEmpty');
+  const ids = Object.keys(wishlist);
+
+  updateWishlistStats();
+
+  if (ids.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  grid.innerHTML = ids.map(id => {
+    const entry = wishlist[id];
+    const d = districts.find(x => x.id == id);
+    if (!d) return '';
+    const ratingEmojis = ['','😐','🙂','😊','😍','🤩'];
+    const ratingTexts  = {
+      si: ['','Not great','Okay','Good','Very good','Amazing!'],
+      en: ['','Not great','Okay','Good','Very good','Amazing!']
+    };
+    const L = currentLang;
+    const ratingLabel = entry.rating > 0
+      ? `${ratingEmojis[entry.rating]} ${ratingTexts[L][entry.rating]}`
+      : (L === 'si' ? 'Not rated' : 'Not rated');
+
+    const starsHtml = [1,2,3,4,5].map(s => {
+      const emojiMap = ['','⭐','⭐⭐','🌟','💫','✨'];
+      const singleEmoji = ['','⭐','⭐','🌟','💫','✨'][s];
+      return `<button class="rating-star ${entry.rating >= s ? 'active' : ''}"
+        onclick="setRating(${id}, ${s}, this)"
+        onmouseenter="previewRating(${id}, ${s})"
+        onmouseleave="clearRatingPreview(${id})"
+        title="${ratingTexts[L][s]}">${singleEmoji}</button>`;
+    }).join('');
+
+    const barWidth = entry.rating > 0 ? (entry.rating / 5 * 100) : 0;
+    const notePlaceholder = L === 'si' ? 'Write a note...' : 'Write a note...';
+    const removeTxt = L === 'si' ? '🗑 Remove from list' : '🗑 Remove from list';
+    const visitedLbl = L === entry.visited ? '✅ Visited' : 'Not visited';
+    const name = d.en;
+    const province = d.provinceEn;
+    const ratingTitleTxt = L === 'si' ? 'Your Rating' : 'Your Rating';
+    return `
+      <div class="wishlist-card" id="wlcard_${id}">
+        <div class="wishlist-card-top">
+          <img src="${d.img}" alt="${d.en}" loading="lazy">
+          <div class="wishlist-card-top-overlay"></div>
+        </div>
+        <div class="wishlist-card-body">
+          <div>
+            <div class="wishlist-card-name">${name}</div>
+            <div class="wishlist-card-province">${province}</div>
+          </div>
+
+          <div class="rating-wrap" id="ratingWrap_${id}">
+            <div class="rating-label-row">
+              <span class="rating-title">${ratingTitleTxt}</span>
+              <span class="rating-current-label" id="ratingLbl_${id}">${ratingLabel}</span>
+            </div>
+            <div class="rating-stars-row">${starsHtml}</div>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" id="ratingBar_${id}" style="width:${barWidth}%"></div>
+            </div>
+          </div>
+
+          <label class="visited-row" style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+            <input type="checkbox" ${entry.visited ? 'checked' : ''} onchange="setVisited(${id}, this.checked)" style="display:none">
+            <div class="visited-track" onclick=""><div class="visited-thumb" style="left:${entry.visited ? '20px' : '2px'}"></div></div>
+            <span class="visited-label" style="color:${entry.visited ? 'var(--accent)' : 'var(--muted)'}; font-weight:${entry.visited ? '600' : '400'}">${visitedLbl}</span>
+          </label>
+          <textarea class="wishlist-note" placeholder="${notePlaceholder}" onchange="setNote(${id}, this.value)" oninput="setNote(${id}, this.value)">${entry.note || ''}</textarea>
+          <button class="wishlist-remove-btn" onclick="removeFromWishlist(${id})">${removeTxt}</button>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Fix toggle thumbs after render (checkbox state)
+  Object.keys(wishlist).forEach(id => {
+    const card = document.getElementById('wlcard_' + id);
+    if (!card) return;
+    const cb = card.querySelector('input[type=checkbox]');
+    const thumb = card.querySelector('.visited-thumb');
+    if (cb && thumb) {
+      cb.addEventListener('change', function() {
+        thumb.style.left = this.checked ? '20px' : '2px';
+        const lbl = card.querySelector('.visited-label');
+        const L = currentLang;
+        if (lbl) {
+          lbl.style.color = this.checked ? 'var(--accent)' : 'var(--muted)';
+          lbl.style.fontWeight = this.checked ? '600' : '400';
+          lbl.textContent = this.checked ? ('✅ Visited') : ('Not visited');
+        }
+      });
+    }
+  });
+}
+
+// Init wishlist on load
+updateWishlistBadge();
+renderWishlist();
+
+// ============ END WISHLIST ============
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Init
+renderDistricts(districts);
+</script>
+</body>
+</html>
